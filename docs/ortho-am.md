@@ -59,11 +59,14 @@ Priehľadný a sterilný gél určený na aplikáciu do kĺbu dodávaný v sklen
 
 - **Ambulantné hodiny:** Streda 16:00 – 20:00
 - **Objednávanie:** formou **SMS** na nižšie uvedenom čísle. Prosíme stručne opísať Vaše ťažkosti.
-- **Platba:** len v hotovosti.
 
 ### Lekár
 
 - MUDr. Augustín Majcher, PhD.
+
+### Adresa
+
+- Hálkova 2749/3, 4. poschodie, dvere č. 43, 010 01 Žilina
 
 ### Telefón
 

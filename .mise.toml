@@ -1,0 +1,15 @@
+[tools]
+go = "1.22"
+
+[tasks.build-remove-bg]
+description = "Build the background-removal CLI into tools/remove-bg/bin/"
+run = "go build -C tools/remove-bg -o ./bin/remove-bg ."
+
+[tasks.download-onnxruntime]
+description = "Fetch the ONNXRuntime shared lib for this host into tools/remove-bg/lib/"
+run = "go run ./tools/remove-bg/cmd/download-onnxruntime"
+
+[tasks.test-remove-bg]
+description = "Run the remove-bg test suite (skips inference tests unless ONNXRUNTIME_LIB is set)"
+depends = ["build-remove-bg"]
+run = "cd tools/remove-bg && go test ./..."

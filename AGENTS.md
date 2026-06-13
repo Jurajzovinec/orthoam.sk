@@ -29,6 +29,23 @@ The hint should be short and concrete: name the plugin/command, say why it fits,
 - No build step, no framework, no backend.
 - Deployed via GitHub (Pages or similar) in the future.
 
+## Visual inspection (Playwright MCP)
+
+A project-level **Playwright MCP** server is configured in `.mcp.json` (Microsoft's official `@playwright/mcp`). It lets agents drive a real browser to visually verify their changes — useful for this site because it is static HTML/CSS/JS with no test suite.
+
+When to use it:
+
+- After changing layout, typography, colors, or any visible UI — open the page and look at it instead of guessing.
+- To debug responsive behavior, hover states, modal open/close, nav anchor scrolling, or the hero slideshow.
+- Before claiming a UI task is "done" — capture a screenshot as evidence (aligns with the `superpowers:verification-before-completion` practice).
+
+How to use it:
+
+- Serve the site locally first (e.g. `python3 -m http.server` from the repo root), then navigate the Playwright browser to `http://localhost:8000`.
+- Prefer the `--caps vision` capability / screenshot tools for visual review. Keep snapshots focused on the changed area.
+- Don't leave the local server running in the background when you're done — kill it.
+- Playwright MCP is for **inspection only** here. Do not script content changes through the browser; edit the source files directly.
+
 ## Content sources of truth
 
 All copy on the site must come from these two documents. Treat them as canonical; do not invent services, prices, hours, or contact details.
@@ -45,7 +62,6 @@ When the template's sections need filler text, replace it with the Slovak copy f
 - **E-mail:** orthoamsro@gmail.com
 - **Ambulantné hodiny:** Streda 16:00 – 20:00
 - **Booking:** SMS only — ask patients to briefly describe their complaint.
-- **Payment:** cash only.
 - **Storno:** cancel by SMS or e-mail at least **24 hours** before the appointment.
 - **Type of facility:** ambulance (neštátna ortopedická ambulancia, bez zmluvy so zdravotnými poisťovňami) — **not** a clinic. Avoid words like "klinika".
 - **SEO title:** Ortopedická Ambulancia - OrthoAM
@@ -94,8 +110,8 @@ When adding new modals, register the term in both the trigger markup and the con
 
 ## Working conventions
 
-- Keep the single-page structure of the original site (hero, O nás, lekár, služby/liečby, certifikácia, kontakt).
-- Preserve semantic anchor IDs (`#o-nas`, `#lekar`, `#kontakt`, …) so the template's nav still works.
+- Keep the single-page structure of the original site (hero, O nás, služby/liečby, certifikácia, kontakt).
+- Preserve semantic anchor IDs (`#o-nas`, `#kontakt`, …) so the template's nav still works.
 - Do **not** add WhatsApp/social icons. The contact section should expose phone (click-to-call), SMS, and e-mail only.
 - The contact form: the legacy site has one. Since there is no backend, prefer a `mailto:` link, a form that opens the user's mail client, or a clearly labeled note to use SMS/e-mail. Don't introduce a server or third-party backend without explicit approval.
 - Keep Slovak typography: use proper diacritics, en/em dashes where the docs do, and `„…"` Slovak quotes when needed.

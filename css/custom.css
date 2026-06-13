@@ -1,0 +1,910 @@
+/*---------------------------------------
+  OrthoAM — custom overrides
+-----------------------------------------*/
+
+/* Slovak typography helpers */
+:root {
+  --accent-bg: #eef4ff;
+  --soft-border: #d8e2f0;
+}
+
+/*---------------------------------------
+  HERO — rotating headline
+-----------------------------------------*/
+.heroText h1 .hero-line-static {
+  display: block;
+  color: var(--dark-color);
+  line-height: 1.1;
+}
+
+.heroText h1 .animated-info {
+  display: block;
+  margin-top: 0.15em;
+  min-width: 0;
+  /* height of one line, so absolutely-positioned items don't overflow */
+  height: 1.1em;
+}
+
+.heroText h1 .animated-item {
+  color: var(--primary-color);
+  white-space: nowrap;
+}
+
+/*---------------------------------------
+  SERVICES GRID
+-----------------------------------------*/
+.service-card {
+  padding: 2rem 1.75rem;
+  border-radius: 0.5rem;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.service-card:hover {
+  transform: translateY(-4px);
+}
+
+.service-icon {
+  color: var(--primary-color);
+  font-size: 2.75rem;
+  margin-bottom: 1rem;
+}
+
+.service-icon-img {
+  font-size: inherit;
+  width: 3rem;
+  height: auto;
+  line-height: 1;
+}
+
+.service-icon-img img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.service-card h3 {
+  font-size: 1.35rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--dark-color);
+  margin-bottom: 0.75rem;
+}
+
+.service-card p {
+  margin-bottom: 0;
+}
+
+.service-link {
+  display: inline-block;
+  margin-top: 0.85rem;
+  color: var(--primary-color);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--menu-font-size);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/*---------------------------------------
+  THERAPY LISTS (ACP / CHONDROPLUS / PROSTROLANE)
+-----------------------------------------*/
+.therapy-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.therapy-list li {
+  position: relative;
+  padding-left: 1.75rem;
+  margin-bottom: 0.75rem;
+  color: var(--p-color);
+  font-size: var(--p-font-size);
+  font-weight: var(--font-weight-light);
+  letter-spacing: 0.5px;
+  line-height: 1.6;
+}
+
+.therapy-list li::before {
+  content: "\F26E"; /* bi-check2 */
+  font-family: "bootstrap-icons";
+  color: var(--primary-color);
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-weight: bold;
+}
+
+/*---------------------------------------
+  THERAPY SECTIONS (CHONDROPLUS / PROSTROLANE)
+  Visual rhythm + shared figure treatment
+-----------------------------------------*/
+.therapy-section + .therapy-section {
+  border-top: 1px solid var(--soft-border);
+}
+
+/* Subtle tint on alternating section so the two therapies read as distinct beats */
+.therapy-section--alt {
+  background: linear-gradient(180deg, var(--accent-bg) 0%, #ffffff 60%);
+}
+
+.therapy-eyebrow {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--primary-color);
+  margin-bottom: 0.6rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 2px solid var(--primary-color);
+}
+
+.therapy-section h2 {
+  letter-spacing: -0.01em;
+}
+
+.therapy-figure {
+  position: relative;
+}
+
+/* Product imagery is a transparent PNG (no rectangular card). Let the product
+   "float" with a soft outline-aware shadow and center it within the column. */
+.therapy-figure-img {
+  display: block;
+  margin-inline: auto;
+  max-height: 360px;
+  width: auto;
+  filter: drop-shadow(0 18px 35px rgba(15, 23, 42, 0.18));
+}
+
+.therapy-figure-caption {
+  margin-top: 0.9rem;
+  font-size: 0.82rem;
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--p-color);
+  padding-left: 0.85rem;
+  border-left: 3px solid var(--primary-color);
+}
+
+/* On wide screens, pin the product image while the composition list scrolls past */
+@media screen and (min-width: 992px) {
+  .therapy-figure {
+    position: sticky;
+    top: 2rem;
+  }
+}
+
+/*---------------------------------------
+  CERTIFICATION — auto-scrolling marquee + lightbox
+-----------------------------------------*/
+
+.cert-thumb {
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  background: var(--white-color);
+  border-radius: 0.4rem;
+  overflow: hidden;
+  cursor: pointer;
+  /* Thin accent rule at the top — a quiet nod to a certificate's ribbon */
+  box-shadow: inset 0 2px 0 0 var(--primary-color), 0 0.6rem 1.4rem rgba(20, 40, 80, 0.10);
+  transition: transform 0.3s cubic-bezier(0.2, 0.7, 0.2, 1), box-shadow 0.3s ease;
+}
+
+.cert-thumb img {
+  width: 100%;
+  height: 12.5rem;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.cert-thumb:hover,
+.cert-thumb:focus-visible {
+  transform: translateY(-4px);
+  box-shadow: inset 0 2px 0 0 var(--primary-color), 0 1.1rem 2.4rem rgba(20, 40, 80, 0.18);
+}
+
+.cert-thumb:hover img,
+.cert-thumb:focus-visible img {
+  transform: scale(1.04);
+}
+
+.cert-thumb:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 3px;
+}
+
+@keyframes cert-scroll {
+  /* Constant -50vw offset on both endpoints shifts the visible window into the
+     middle of the first set of cards (centered feel) without changing the
+     animation delta, so the JS-duplicated loop stays seamless. */
+  from { transform: translateX(-50vw); }
+  to   { transform: translateX(calc(-100% - 1.25rem - 50vw)); }
+}
+
+/*---------------------------------------
+  REFERENCES — testimonial marquee (mirrors the cert pattern)
+-----------------------------------------*/
+
+/* Shared marquee viewport rules — cert and ref must stay in lockstep */
+.cert-marquee,
+.ref-marquee {
+  position: relative;
+  width: 100vw;
+  padding: 0.5rem 0 1.75rem;
+  /* Soft side fades so cards enter/leave gracefully instead of clipping hard */
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 6%, #000 94%, transparent 100%);
+          mask-image: linear-gradient(90deg, transparent 0, #000 6%, #000 94%, transparent 100%);
+}
+
+/* Shared track rules — flex row, gap, pause-on-hover */
+.cert-track,
+.ref-track {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 1.25rem;
+  width: -webkit-max-content;
+  width: max-content;
+}
+
+.cert-track:hover,
+.ref-track:hover {
+  animation-play-state: paused;
+}
+
+/* Per-track animation (different durations) */
+.cert-track {
+  animation: cert-scroll 42s linear infinite;
+}
+
+.ref-track {
+  animation: ref-scroll 55s linear infinite; /* slower — quotes must be readable */
+}
+
+/* Reduced-motion fallback for both tracks */
+@media (prefers-reduced-motion: reduce) {
+  .cert-track,
+  .ref-track {
+    animation: none;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Item widths — testimonials need more room than certificate scans */
+.cert-item {
+  flex: 0 0 auto;
+  width: 16rem; /* fixed width → uniform rhythm regardless of image aspect */
+}
+
+.ref-item {
+  flex: 0 0 auto;
+  width: 18rem;
+}
+
+/* The card itself — white slab with the same top accent ribbon as cert thumbs,
+   but no click/hover behaviour (testimonials are decorative, not interactive) */
+.ref-card {
+  margin: 0;
+  background: var(--white-color);
+  border-radius: 0.4rem;
+  padding: 1.5rem 1.4rem 1.35rem;
+  height: 100%;
+  box-shadow: inset 0 2px 0 0 var(--primary-color), 0 0.6rem 1.4rem rgba(20, 40, 80, 0.10);
+}
+
+.ref-card blockquote {
+  margin: 0 0 1rem;
+  padding: 0;
+  font-style: italic;
+  color: var(--p-color);
+  font-weight: var(--font-weight-light);
+  font-size: var(--p-font-size);
+  letter-spacing: 0.3px;
+  line-height: 1.5;
+}
+
+.ref-card figcaption {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.ref-author {
+  font-weight: var(--font-weight-bold);
+  color: var(--title-color);
+  font-size: 0.95rem;
+}
+
+/* Service line reuses the .therapy-figure-caption motif: small uppercase + left border */
+.ref-service {
+  align-self: flex-start;
+  font-size: 0.72rem;
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--p-color);
+  padding-left: 0.6rem;
+  border-left: 3px solid var(--primary-color);
+}
+
+@keyframes ref-scroll {
+  from { transform: translateX(-50vw); }
+  to   { transform: translateX(calc(-100% - 1.25rem - 50vw)); }
+}
+
+/*---------------------------------------
+  CERTIFICATION LIGHTBOX
+-----------------------------------------*/
+.lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2100;
+  background: rgba(8, 16, 36, 0.86);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  animation: lightboxFade 0.25s ease;
+}
+
+.lightbox-overlay[hidden] { display: none; }
+
+.lightbox-figure {
+  position: relative;
+  max-width: min(620px, 92vw);
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: lightboxIn 0.3s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.lightbox-image {
+  max-width: 100%;
+  max-height: 80vh;
+  width: auto;
+  height: auto;
+  display: block;
+  border-radius: 0.4rem;
+  background: var(--white-color);
+  box-shadow: 0 1.2rem 4rem rgba(0, 0, 0, 0.5);
+}
+
+.lightbox-caption {
+  margin-top: 0.9rem;
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 0.85rem;
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: -2.75rem;
+  right: -0.25rem;
+  width: 2.4rem;
+  height: 2.4rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 50%;
+  background: transparent;
+  color: #fff;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.lightbox-close:hover,
+.lightbox-close:focus-visible {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.6);
+  transform: rotate(90deg);
+  outline: none;
+}
+
+@keyframes lightboxFade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes lightboxIn {
+  from { opacity: 0; transform: scale(0.94) translateY(8px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/*---------------------------------------
+  BOOKING CTA
+-----------------------------------------*/
+.booking-cta .btn {
+  border-radius: 0;
+  text-transform: uppercase;
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.5px;
+  padding: 0.9rem 2rem;
+}
+
+.btn-primary {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+  background: #0f5fd6;
+  border-color: #0f5fd6;
+}
+
+.btn-outline-primary {
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.btn-outline-primary:hover {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+/*---------------------------------------
+  HOURS CARD (Objednávanie section)
+-----------------------------------------*/
+.hours-card {
+  background: #ffffff;
+  border: 1px solid var(--soft-border);
+  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.05);
+}
+
+.hours-card h3 {
+  color: var(--primary-color);
+}
+
+.hours-card .list-group-item {
+  border-bottom: 0;
+  padding: 0.4rem 0;
+  color: var(--title-color);
+}
+
+/*---------------------------------------
+  STORNO NOTICE
+-----------------------------------------*/
+.storno-notice {
+  background: var(--accent-bg);
+  border-left: 4px solid var(--primary-color);
+}
+
+.storno-notice h3 {
+  color: var(--primary-color);
+}
+
+.storno-notice p {
+  color: var(--title-color);
+}
+
+/*---------------------------------------
+  TERM TRIGGER (modal hint)
+-----------------------------------------*/
+.term-trigger {
+  text-decoration: underline dotted;
+  text-decoration-color: var(--primary-color);
+  text-underline-offset: 3px;
+  cursor: pointer;
+  color: var(--primary-color);
+  font-weight: var(--font-weight-semibold);
+  background: none;
+  border: 0;
+  padding: 0;
+  display: inline;
+}
+
+.term-trigger:hover {
+  text-decoration-style: solid;
+  color: #0f5fd6;
+}
+
+.term-trigger:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.term-icon {
+  font-size: 0.8em;
+  margin-left: 2px;
+  opacity: 0.7;
+}
+
+/*---------------------------------------
+  MODAL
+-----------------------------------------*/
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.modal-overlay[hidden] {
+  display: none;
+}
+
+.modal-dialog {
+  position: relative;
+  background: var(--white-color);
+  border-radius: 0.5rem;
+  max-width: 600px;
+  width: 100%;
+  padding: 2.5rem 2rem 2rem;
+  max-height: 85vh;
+  overflow-y: auto;
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.25);
+  animation: modalIn 0.25s ease;
+}
+
+.modal-title {
+  color: var(--dark-color);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: 1rem;
+  padding-right: 2rem;
+}
+
+.modal-body p,
+.modal-body li {
+  color: var(--p-color);
+  font-size: var(--p-font-size);
+  font-weight: var(--font-weight-light);
+  letter-spacing: 0.5px;
+  line-height: 1.7;
+}
+
+.modal-body strong {
+  color: var(--title-color);
+}
+
+.modal-close {
+  position: absolute;
+  top: 0.5rem;
+  right: 1rem;
+  border: 0;
+  background: transparent;
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+  color: var(--p-color);
+  padding: 0.5rem;
+  transition: color 0.2s ease;
+}
+
+.modal-close:hover {
+  color: var(--dark-color);
+}
+
+@keyframes modalIn {
+  from { opacity: 0; transform: scale(0.96) translateY(6px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/*---------------------------------------
+  LOKALITA — address + map
+  Asymmetric split: a tinted, calm address card against a framed map.
+  The corner mark on the map echoes the certificate thumbs' inset accent rule.
+-----------------------------------------*/
+.location-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: var(--accent-bg);
+  border-left: 4px solid var(--primary-color);
+  padding: 2.5rem 2.25rem;
+  border-radius: 0.25rem;
+}
+
+.location-address {
+  margin: 0;
+  padding: 0;
+  font-style: normal;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.location-line {
+  display: block;
+  color: var(--p-color);
+  font-size: var(--p-font-size);
+  font-weight: var(--font-weight-light);
+  letter-spacing: 0.5px;
+  line-height: 1.5;
+}
+
+.location-line--lead {
+  color: var(--dark-color);
+  font-weight: var(--font-weight-bold);
+  font-size: 1.4rem;
+  letter-spacing: -0.005em;
+  margin-bottom: 0.5rem;
+}
+
+/* Street + city — a calm, scannable pair */
+.location-line:nth-of-type(2) {
+  color: var(--title-color);
+  font-weight: var(--font-weight-semibold);
+}
+
+.location-note {
+  font-size: 0.95rem;
+  line-height: 1.65;
+}
+
+/* Directions CTA — a clean animated underline link, not a chunky button */
+.location-directions-group {
+  margin-top: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.75rem;
+  align-items: center;
+}
+
+.location-directions {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--primary-color);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--menu-font-size);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  text-decoration: none;
+  padding-bottom: 4px;
+  background-image: linear-gradient(var(--primary-color), var(--primary-color));
+  background-size: 0% 2px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.3s cubic-bezier(0.2, 0.7, 0.2, 1), gap 0.3s ease, color 0.2s ease;
+}
+
+.location-directions-icon {
+  width: 1.15em;
+  height: 1.15em;
+  flex-shrink: 0;
+  display: block;
+  object-fit: contain;
+  transition: transform 0.3s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.location-directions i {
+  transition: transform 0.3s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.location-directions:hover {
+  background-size: 100% 2px;
+  gap: 0.85rem;
+  color: var(--primary-color);
+}
+
+.location-directions:hover i {
+  transform: translateX(4px);
+}
+
+.location-directions:hover .location-directions-icon {
+  transform: scale(1.08);
+}
+
+/* Map frame — generous radius, soft shadow, and a single accent corner */
+.location-map {
+  position: relative;
+  height: 100%;
+  min-height: 340px;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  background: var(--white-color);
+  box-shadow: 0 0.9rem 2.4rem rgba(20, 40, 80, 0.12);
+}
+
+.location-map iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 340px;
+  border: 0;
+  filter: grayscale(0.25) saturate(0.95);
+  transition: filter 0.4s ease;
+}
+
+/* Ease the map back to full color on hover/focus-within — invites interaction */
+.location-map:hover iframe,
+.location-map:focus-within iframe {
+  filter: grayscale(0) saturate(1);
+}
+
+/* Decorative accent corner — a small L-shaped rule, top-right,
+   ties to the inset ribbon on .cert-thumb and the therapy figure caption */
+.location-map-corner {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 2.6rem;
+  height: 2.6rem;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.location-map-corner::before,
+.location-map-corner::after {
+  content: "";
+  position: absolute;
+  background: var(--primary-color);
+}
+
+.location-map-corner::before {
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 3px;
+}
+
+.location-map-corner::after {
+  top: 0;
+  right: 0;
+  width: 3px;
+  height: 100%;
+}
+
+@media screen and (max-width: 991px) {
+  .location-card {
+    padding: 2rem 1.75rem;
+  }
+
+  .location-map {
+    min-height: 300px;
+  }
+
+  .location-map iframe {
+    min-height: 300px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .location-line--lead {
+    font-size: 1.25rem;
+  }
+}
+
+/*---------------------------------------
+  FOOTER LINKS
+-----------------------------------------*/
+.site-footer a {
+  color: var(--p-color);
+}
+
+.site-footer a:hover {
+  color: var(--primary-color);
+}
+
+.site-footer .list-group-item span {
+  margin-left: auto;
+  font-weight: var(--font-weight-semibold);
+  color: var(--dark-color);
+}
+
+/*---------------------------------------
+  RESPONSIVE
+-----------------------------------------*/
+@media screen and (max-width: 767px) {
+  .service-card {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .cert-item {
+    width: 12rem;
+  }
+
+  .cert-thumb img {
+    height: 9.5rem;
+  }
+
+  .ref-item {
+    width: 14rem;
+  }
+
+  .booking-cta .btn {
+    display: block;
+    width: 100%;
+  }
+}
+
+/*---------------------------------------
+  LOCATION STRIP — prominent "Žilina" band below the hero
+-----------------------------------------*/
+.location-strip {
+  /* full-bleed accent background with a subtle directional tint */
+  background:
+    linear-gradient(90deg,
+      rgba(36, 124, 255, 0.12) 0%,
+      var(--accent-bg) 35%,
+      var(--accent-bg) 65%,
+      rgba(36, 124, 255, 0.12) 100%),
+    var(--accent-bg);
+  border-top: 1px solid var(--soft-border);
+  border-bottom: 1px solid var(--soft-border);
+  padding: 1rem 0;
+  text-align: center;
+  overflow: hidden;
+}
+
+.location-strip__text {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: var(--font-weight-semibold, 600);
+  color: var(--dark-color);
+  letter-spacing: 0.01em;
+  /* gentle entrance so the band registers on page load */
+  animation: locationStripReveal 0.6s ease-out both;
+}
+
+.location-strip__text strong {
+  color: var(--primary-color);
+  font-weight: var(--font-weight-bold, 700);
+}
+
+.location-strip__pin {
+  color: var(--primary-color);
+  font-size: 1.35em;
+  transform: translateY(-1px);
+  /* a soft live pulse keeps the location feeling active, not static */
+  animation: locationPinPulse 2.4s ease-in-out infinite;
+}
+
+@keyframes locationStripReveal {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes locationPinPulse {
+  0%, 100% { transform: translateY(-1px) scale(1);    opacity: 1;   }
+  50%      { transform: translateY(-3px) scale(1.12); opacity: 0.75; }
+}
+
+@media (max-width: 575.98px) {
+  .location-strip__text {
+    font-size: 0.95rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    line-height: 1.3;
+  }
+}
+
+/* Doctor's sign-off under the O nás text */
+.signature {
+  margin-top: 1.6rem;
+  font-family: "Open Sans", system-ui, sans-serif;
+  font-style: italic;
+  font-weight: 600;
+  font-size: 1.15rem;
+  color: var(--primary-color);
+  letter-spacing: 0.02em;
+}
+
+.signature::before {
+  content: "—";
+  margin-right: 0.35em;
+  color: var(--primary-color);
+  font-style: normal;
+}
