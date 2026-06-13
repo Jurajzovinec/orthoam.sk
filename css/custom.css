@@ -237,6 +237,11 @@
   position: relative;
   width: 100vw;
   padding: 0.5rem 0 1.75rem;
+  /* The track is `width: max-content` (several thousand px) and translated by
+     the animation. Without clipping, it spills past the viewport and creates
+     horizontal scroll on phones. mask-image only fades pixels, it does NOT
+     clip the scrollable region, so overflow: hidden is required here. */
+  overflow: hidden;
   /* Soft side fades so cards enter/leave gracefully instead of clipping hard */
   -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 6%, #000 94%, transparent 100%);
           mask-image: linear-gradient(90deg, transparent 0, #000 6%, #000 94%, transparent 100%);
