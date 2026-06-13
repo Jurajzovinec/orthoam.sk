@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+    <url>
+        <loc>https://www.orthoam.sk/</loc>
+        <lastmod>2026-06-13</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>1.0</priority>
+        <image:image>
+            <image:loc>https://www.orthoam.sk/img/profile-enhanced-1084x1451.webp</image:loc>
+            <image:title>MUDr. Augustín Majcher, PhD. – ortopéd, OrthoAM Žilina</image:title>
+            <image:caption>Ortopedická ambulancia OrthoAM v Žiline</image:caption>
+        </image:image>
+    </url>
+</urlset>

@@ -1,0 +1,21 @@
+# https://www.orthoam.sk/robots.txt
+User-agent: *
+Allow: /
+
+# LLM / AI crawlers — explicit allow
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://www.orthoam.sk/sitemap.xml
