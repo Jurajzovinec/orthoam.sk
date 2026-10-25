@@ -17,16 +17,42 @@
     "peptidy": {
       title: "Peptidy",
       body:
-        "<p>Špecifické peptidy v kombinácii s vysoko kvalitnou kyselinou hyalurónovou podporujú novotvorbu chrupavkového a kostného tkaniva, zaisťujú správne mechanické a funkčné vlastnosti kĺbu a chránia biomolekulárne látky pred predčasnou degradáciou.</p>" +
-        "<p>Prostrolane obsahuje 5 kľúčových biomimetických peptidov s technológiou postupného uvoľňovania (Sustained Release Technology), vďaka ktorej zostávajú peptidy v kĺbe aktívne po dlhšiu dobu:</p>" +
+        "<p>Peptidy sú krátke úseky bielkovín – látok, z ktorých je postavené celé naše telo. Vďaka svojej malej veľkosti dobre prenikajú tkanivami a v tele fungujú ako „poslovia“: odovzdávajú bunkám pokyny, kde je potrebná obnova alebo upokojenie zápalu.</p>" +
+        "<p>Pri ochoreniach kĺbov je táto signalizácia kľúčová – telo potrebuje podnety na novotvorbu chrupavkového a kostného tkaniva a na ochranu látok, ktoré sa predčasne rozpadajú. Práve to peptidy v kombinácii s vysokokvalitnou kyselinou hyalurónovou podporujú, vďaka čomu kĺb lepšie vydrží záťaž a pohyb.</p>" +
+        "<p>Preto sú biomimetické peptidy (umelo vytvorené podľa vzoru tých prirodzených) súčasťou prípravkov CHONDROPLUS aj PROSTROLANE, ktoré v ambulancii aplikujem.</p>"
+    },
+    "indikacie-acp": {
+      title: "Indikácie ACP liečby",
+      body:
+        "<p>ACP liečba (autológna kondicionovaná plazma) je vhodná pri týchto diagnózach a stavoch:</p>" +
+        "<ul>" +
+        "<li>Artróza kĺbov – koleno, rameno, členok, lakeť, bedrový kĺb – vhodné u I.–III. stupňa artrózy, v IV. štádiu má význam na zmiernenie ťažkostí u pacientov, ktorí nemôžu podstúpiť operačnú liečbu</li>" +
+        "<li>Poúrazové poškodenie chrupavky po artroskopickom ošetrení chrupavky</li>" +
+        "<li>Akútne a subakútne poškodenia kĺbových väzov</li>" +
+        "<li>Podvrtnutie kĺbov a natiahnutie väzov</li>" +
+        "<li>Ochorenie úponov šliach a väzov – napr. tenisový lakeť, zápal Achillovej šlachy…</li>" +
+        "<li>Akútne a chronické zápaly šliach a väzov</li>" +
+        "<li>Podpora hojenia chrupaviek, väzov, svalov, šliach po úrazoch a operáciách</li>" +
+        "</ul>"
+    },
+    "zlozenie-chondroplus": {
+      title: "Zloženie Chondroplus",
+      body:
+        "<p>Priehľadný a sterilný gél určený na aplikáciu do kĺbu dodávaný v sklenenej injekčnej striekačke (2 ml).</p>" +
+        "<ul>" +
+        "<li><strong>2 % hyaluronát sodný (40 mg / 2 ml)</strong> – vysokokvalitná kyselina hyalurónová neživočínskeho pôvodu. Zabezpečuje premazanie kĺbu a obnovu viskozity kĺbovej tekutiny.</li>" +
+        "<li><strong>1 % syntetický peptid (20 mg / 2 ml)</strong> – kolagénový tripeptid s nízkou molekulovou hmotnosťou. Vďaka malej molekule lepšie preniká do kĺbových tkanív a podporuje regeneračné procesy priamo v chrupavke.</li>" +
+        "</ul>"
+    },
+    "zlozenie-prostrolane": {
+      title: "Zloženie a technológia PROSTROLANE",
+      body:
+        "<p>Základom je kyselina hyalurónová, ktorá slúži ako nosič aktívnych látok. Vďaka technológii postupného uvoľňovania (Sustained Release Technology) zostávajú peptidy v kĺbe aktívne po dlhšiu dobu. Medzi 5 kľúčových biomimetických peptidov patria:</p>" +
         "<ul>" +
         "<li><strong>Heptapeptide-16</strong> – zameraný na potlačenie zápalu v kĺbe.</li>" +
-        "<li><strong>Nanopeptide-25</strong> – stimuluje regeneráciu chrupavky a chráni ju pred opotrebovaním.</li>" +
-        "<li><strong>Octapeptide-11</strong></li>" +
-        "<li><strong>Decapeptide-23</strong></li>" +
-        "<li><strong>Oligopeptide-92</strong></li>" +
-        "</ul>" +
-        "<p>Tieto okrem iného podporujú novotvorbu kosti a zabraňujú jej odbúravaniu.</p>"
+        "<li><strong>Nonapeptide-25</strong> – stimuluje regeneráciu chrupavky a chráni ju pred opotrebením.</li>" +
+        "<li><strong>Octapeptide-11, Decapeptide-23, Oligopeptide-92</strong> – dopĺňajú komplex biomimetických peptidov, ktoré napodobňujú prirodzené aminokyselinové sekvencie a podporujú protizápalové a regeneračné procesy v kĺbe.</li>" +
+        "</ul>"
     }
   };
 

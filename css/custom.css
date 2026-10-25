@@ -507,7 +507,7 @@
   STORNO NOTICE
 -----------------------------------------*/
 .storno-notice {
-  background: var(--accent-bg);
+  background: var(--section-bg-color);
   border-left: 4px solid var(--primary-color);
 }
 
@@ -636,7 +636,7 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  background: var(--accent-bg);
+  background: var(--section-bg-color);
   border-left: 4px solid var(--primary-color);
   padding: 2.5rem 2.25rem;
   border-radius: 0.25rem;
