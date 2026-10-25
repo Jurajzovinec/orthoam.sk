@@ -35,10 +35,13 @@
     var refTrack = document.querySelector('.ref-track');
     if (refTrack) {
       var originals = Array.prototype.slice.call(refTrack.children);
-      originals.forEach(function (li) {
-        refTrack.appendChild(li.cloneNode(true));
-        refTrack.appendChild(li.cloneNode(true));
-      });
+      // Clone the whole SET twice (not each card twice) so the track reads
+      // 1,2,3,4, 1,2,3,4, 1,2,3,4 — no identical reviews side by side.
+      for (var copy = 0; copy < 2; copy++) {
+        originals.forEach(function (li) {
+          refTrack.appendChild(li.cloneNode(true));
+        });
+      }
 
       if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         window.addEventListener('load', function () {
