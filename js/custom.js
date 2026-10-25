@@ -31,4 +31,33 @@
       }
     });
 
+    // TESTIMONIAL MARQUEE — insert each reference 3x, then scroll one set per loop
+    var refTrack = document.querySelector('.ref-track');
+    if (refTrack) {
+      var originals = Array.prototype.slice.call(refTrack.children);
+      originals.forEach(function (li) {
+        refTrack.appendChild(li.cloneNode(true));
+        refTrack.appendChild(li.cloneNode(true));
+      });
+
+      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        window.addEventListener('load', function () {
+          var gap = parseFloat(getComputedStyle(refTrack).gap) || 0;
+          // width of one set (the original cards) + its trailing gap = seamless loop distance
+          var setWidth = originals.reduce(function (sum, li) {
+            return sum + li.offsetWidth + gap;
+          }, 0);
+
+          refTrack.style.animation = 'none'; // replace the CSS keyframes (they assume 2 sets)
+          refTrack.animate(
+            [
+              { transform: 'translateX(0)' },
+              { transform: 'translateX(-' + setWidth + 'px)' }
+            ],
+            { duration: 55000, iterations: Infinity }
+          );
+        });
+      }
+    }
+
   })(window.jQuery);

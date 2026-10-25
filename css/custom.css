@@ -8,6 +8,11 @@
   --soft-border: #d8e2f0;
 }
 
+/* map Bootstrap's .text-primary / .btn-primary onto the site palette */
+.text-primary {
+  color: var(--primary-color) !important;
+}
+
 /*---------------------------------------
   HERO — rotating headline
 -----------------------------------------*/
@@ -28,6 +33,24 @@
 .heroText h1 .animated-item {
   color: var(--primary-color);
   white-space: nowrap;
+  /* play the rotation once, then keep the final frame */
+  animation: BottomTotop 7.5s linear 1 0s forwards;
+}
+
+.heroText h1 .animated-item:nth-child(2) {
+  animation-delay: 2.5s;
+}
+
+/* the last phrase ("a s pochopením.") stays on screen */
+.heroText h1 .animated-item:nth-child(3) {
+  animation-delay: 5s;
+  animation-name: BottomTotopHold;
+}
+
+@keyframes BottomTotopHold {
+  0%, 5%   { opacity: 0; transform: translateY(5px); }
+  10%      { opacity: 1; transform: translateY(0); }
+  100%     { opacity: 1; transform: translateY(0); }
 }
 
 /*---------------------------------------
@@ -447,8 +470,8 @@
 }
 
 .btn-primary:hover {
-  background: #0f5fd6;
-  border-color: #0f5fd6;
+  background: var(--dark-color);
+  border-color: var(--dark-color);
 }
 
 .btn-outline-primary {
@@ -465,7 +488,7 @@
   HOURS CARD (Objednávanie section)
 -----------------------------------------*/
 .hours-card {
-  background: #ffffff;
+  background: var(--white-color);
   border: 1px solid var(--soft-border);
   box-shadow: 0 6px 20px rgba(15, 23, 42, 0.05);
 }
@@ -514,7 +537,7 @@
 
 .term-trigger:hover {
   text-decoration-style: solid;
-  color: #0f5fd6;
+  color: var(--dark-color);
 }
 
 .term-trigger:focus-visible {
@@ -868,6 +891,18 @@
 .location-strip__text strong {
   color: var(--primary-color);
   font-weight: var(--font-weight-bold, 700);
+}
+
+.location-strip__text a {
+  color: inherit;
+  text-decoration: underline dotted;
+  text-underline-offset: 3px;
+  transition: opacity 0.2s ease;
+}
+
+.location-strip__text a:hover,
+.location-strip__text a:focus-visible {
+  opacity: 0.75;
 }
 
 .location-strip__pin {
