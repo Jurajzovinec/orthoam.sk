@@ -1,4 +1,4 @@
-# https://www.orthoam.sk/robots.txt
+# https://orthoam.sk/robots.txt
 User-agent: *
 Allow: /
 
@@ -18,4 +18,4 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
-Sitemap: https://www.orthoam.sk/sitemap.xml
+Sitemap: https://orthoam.sk/sitemap.xml
